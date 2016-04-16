@@ -5,12 +5,12 @@
 Summary:	keybinder library for GTK+3
 Summary(pl.UTF-8):	Biblioteka keybinder dla GTK+3
 Name:		keybinder3
-Version:	0.3.0
+Version:	0.3.1
 Release:	1
 License:	GPL v2
 Group:		Libraries
 Source0:	https://github.com/engla/keybinder/archive/keybinder-3.0-v%{version}.tar.gz
-# Source0-md5:	8238c0e14331225d6c78308f09260e42
+# Source0-md5:	c2f534d7977b337b333313ac9b8bd6c9
 URL:		https://github.com/engla/keybinder/
 BuildRequires:	autoconf >= 2.62
 BuildRequires:	automake >= 1:1.9.2
