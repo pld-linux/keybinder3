@@ -5,19 +5,19 @@
 Summary:	keybinder library for GTK+3
 Summary(pl.UTF-8):	Biblioteka keybinder dla GTK+3
 Name:		keybinder3
-Version:	0.3.1
+Version:	0.3.2
 Release:	1
 License:	GPL v2
 Group:		Libraries
-Source0:	https://github.com/engla/keybinder/archive/keybinder-3.0-v%{version}.tar.gz
-# Source0-md5:	c2f534d7977b337b333313ac9b8bd6c9
-URL:		https://github.com/engla/keybinder/
+#Source0Download: https://github.com/kupferlauncher/keybinder/releases
+Source0:	https://github.com/kupferlauncher/keybinder/releases/download/keybinder-3.0-v%{version}/keybinder-3.0-%{version}.tar.gz
+# Source0-md5:	97260321fda721fce799174ea6ba10cf
+URL:		https://github.com/kupferlauncher/keybinder/
 BuildRequires:	autoconf >= 2.62
 BuildRequires:	automake >= 1:1.9.2
 BuildRequires:	gobject-introspection-devel >= 0.6.7
-BuildRequires:	gnome-common
 BuildRequires:	gtk-doc >= 1.14
-BuildRequires:	gtk+3-devel
+BuildRequires:	gtk+3-devel >= 3.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	xorg-lib-libX11-devel
@@ -38,7 +38,7 @@ Summary:	Header files for keybinder3 library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki keybinder3
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gtk+3-devel
+Requires:	gtk+3-devel >= 3.0
 
 %description devel
 Header files for keybinder3 library.
@@ -71,7 +71,7 @@ HTML documentation for keybinder3 library.
 Dokumentacja w HTML biblioteki keybinder3.
 
 %prep
-%setup -q -n keybinder-keybinder-3.0-v%{version}
+%setup -q -n keybinder-3.0-%{version}
 
 %build
 %{__gtkdocize}
@@ -94,6 +94,9 @@ install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libkeybinder-3.0.la
+
 cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
@@ -105,14 +108,13 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README
-%attr(755,root,root) %ghost %{_libdir}/libkeybinder-3.0.so.0
 %attr(755,root,root) %{_libdir}/libkeybinder-3.0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkeybinder-3.0.so.0
 %{_libdir}/girepository-1.0/Keybinder-3.0.typelib
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkeybinder-3.0.so
-%{_libdir}/libkeybinder-3.0.la
 %{_datadir}/gir-1.0/Keybinder-3.0.gir
 %dir %{_includedir}/keybinder-3.0
 %{_includedir}/keybinder-3.0/keybinder.h
