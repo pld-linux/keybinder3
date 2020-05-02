@@ -12,6 +12,7 @@ Group:		Libraries
 #Source0Download: https://github.com/kupferlauncher/keybinder/releases
 Source0:	https://github.com/kupferlauncher/keybinder/releases/download/keybinder-3.0-v%{version}/keybinder-3.0-%{version}.tar.gz
 # Source0-md5:	97260321fda721fce799174ea6ba10cf
+Patch0:		%{name}-docs.patch
 URL:		https://github.com/kupferlauncher/keybinder/
 BuildRequires:	autoconf >= 2.62
 BuildRequires:	automake >= 1:1.9.2
@@ -72,6 +73,7 @@ Dokumentacja w HTML biblioteki keybinder3.
 
 %prep
 %setup -q -n keybinder-3.0-%{version}
+%patch0 -p1
 
 %build
 %{__gtkdocize}
