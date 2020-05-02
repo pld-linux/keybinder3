@@ -75,6 +75,11 @@ Dokumentacja w HTML biblioteki keybinder3.
 %setup -q -n keybinder-3.0-%{version}
 %patch0 -p1
 
+grep -rl /usr/bin/env examples | xargs sed -i -e '1{
+	s,^#!.*bin/env python,#!%{__python},
+	s,^#!.*bin/env lua,#!%{__lua},
+}'
+
 %build
 %{__gtkdocize}
 %{__libtoolize}
