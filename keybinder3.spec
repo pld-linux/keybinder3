@@ -6,7 +6,7 @@ Summary:	keybinder library for GTK+3
 Summary(pl.UTF-8):	Biblioteka keybinder dla GTK+3
 Name:		keybinder3
 Version:	0.3.2
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Libraries
 #Source0Download: https://github.com/kupferlauncher/keybinder/releases
